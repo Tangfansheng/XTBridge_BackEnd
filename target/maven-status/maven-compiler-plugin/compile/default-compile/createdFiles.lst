@@ -1,0 +1,8 @@
+com\voyager\controller\AnchorController.class
+com\voyager\domain\QueryAnchor.class
+com\voyager\service\AnchorService.class
+com\voyager\test\TestJson.class
+com\voyager\dao\AnchorDao.class
+com\voyager\test\TestMybatis.class
+com\voyager\service\AnchorServiceImpl.class
+com\voyager\test\TestSpring.class

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="XTBridge">
+    <output-path>$PROJECT_DIR$/../JavaProject</output-path>
+    <root id="archive" name="XTBridge_war.war">
+      <element id="artifact" artifact-name="XTBridge:war exploded" />
+      <element id="dir-copy" path="$PROJECT_DIR$/../JavaProject" />
+    </root>
+  </artifact>
+</component>
