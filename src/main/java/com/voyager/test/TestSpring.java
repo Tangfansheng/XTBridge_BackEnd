@@ -4,11 +4,10 @@ package com.voyager.test;
 import com.voyager.domain.QueryAnchor;
 import com.voyager.domain.QueryDerrick;
 import com.voyager.domain.QueryStress;
+import com.voyager.domain.login.User;
 import com.voyager.domain.sync.QueryBasket;
-import com.voyager.service.AnchorService;
-import com.voyager.service.BasketService;
-import com.voyager.service.DerrickService;
-import com.voyager.service.StressService;
+import com.voyager.service.*;
+import com.voyager.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -27,9 +26,12 @@ public class TestSpring {
 
 //        BasketService service = (BasketService) context.getBean("BasketServiceImpl");
 //        QueryBasket recentData = service.findRecentData();
-        StressService service = (StressService) context.getBean("StressServiceImpl") ;
-        QueryStress recentData = service.findRecentData();
-        System.out.println(recentData);
+//        StressService service = (StressService) context.getBean("StressServiceImpl") ;
+//        QueryStress recentData = service.findRecentData();
+
+        UserService serviceImpl = (UserServiceImpl)context.getBean("UserServiceImpl");
+        User user = serviceImpl.findUser("ordinary");
+        System.out.println(user);
     }
     @Test
     public void run2(){

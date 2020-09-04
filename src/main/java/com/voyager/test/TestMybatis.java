@@ -3,10 +3,12 @@ package com.voyager.test;
 import com.voyager.dao.AnchorDao;
 import com.voyager.dao.DerrickDao;
 import com.voyager.dao.StressDao;
+import com.voyager.dao.login.UserDao;
 import com.voyager.dao.sync.BasketDao;
 import com.voyager.domain.QueryAnchor;
 import com.voyager.domain.QueryDerrick;
 import com.voyager.domain.QueryStress;
+import com.voyager.domain.login.User;
 import com.voyager.domain.sync.QueryBasket;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -79,6 +81,48 @@ public class TestMybatis {
         sqlSession.commit();
         sqlSession.close();
         inputStream.close();
+    }
+
+    @Test
+    public void run4() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("SqlMapConfig.xml");
+        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.build(inputStream);
+        SqlSession sqlSession = sessionFactory.openSession();
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        User admin = userDao.findUser("admin");
+        System.out.println(admin);
+    }
+
+    /**
+     * 插入数据
+     * @throws IOException
+     */
+    @Test
+    public void run5() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("SqlMapConfig.xml");
+        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.build(inputStream);
+        SqlSession sqlSession = sessionFactory.openSession();
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        User user = new User("ordinary", "123456", 2 );
+        int row = userDao.addUser(user);
+        sqlSession.commit();
+        System.out.println(row);
+
+    }
+
+    @Test
+    public void run6() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("SqlMapConfig.xml");
+        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.build(inputStream);
+        SqlSession sqlSession = sessionFactory.openSession();
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        List<User> list =userDao.getUsers();
+        for(User user: list){
+            System.out.println(user);
+        }
     }
 
 
