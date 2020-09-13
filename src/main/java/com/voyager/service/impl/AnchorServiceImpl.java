@@ -32,5 +32,10 @@ public class AnchorServiceImpl implements AnchorService {
         anchorDao.saveOneRecord(data);
     }
 
+    @Override
+    public List<QueryAnchor> findRecent10Data() {
+        return anchorDao.findRecent10Data();
+    }
+
 
 }

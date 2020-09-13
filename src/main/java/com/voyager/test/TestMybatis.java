@@ -2,14 +2,13 @@ package com.voyager.test;
 
 import com.voyager.dao.AnchorDao;
 import com.voyager.dao.DerrickDao;
-import com.voyager.dao.StressDao;
-import com.voyager.dao.login.UserDao;
+import com.voyager.dao.user.UserDao;
 import com.voyager.dao.sync.BasketDao;
 import com.voyager.domain.QueryAnchor;
 import com.voyager.domain.QueryDerrick;
-import com.voyager.domain.QueryStress;
-import com.voyager.domain.login.User;
+import com.voyager.domain.user.User;
 import com.voyager.domain.sync.QueryBasket;
+import com.voyager.service.DerrickService;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,6 +17,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
 
@@ -58,12 +58,8 @@ public class TestMybatis {
         SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.build(inputStream);
         SqlSession sqlSession = sessionFactory.openSession();
         AnchorDao dao = sqlSession.getMapper(AnchorDao.class);
-        List<QueryAnchor> r = dao.findAllData();
-        for(QueryAnchor data : r ){
-            System.out.println(data);
-        }
-        sqlSession.close();
-        inputStream.close();
+        List<QueryAnchor> data = dao.findRecent10Data();
+        System.out.println(data);
     }
     @Test
     /**
@@ -90,8 +86,10 @@ public class TestMybatis {
         SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.build(inputStream);
         SqlSession sqlSession = sessionFactory.openSession();
         UserDao userDao = sqlSession.getMapper(UserDao.class);
-        User admin = userDao.findUser("admin");
-        System.out.println(admin);
+        int row = userDao.deleteUser("ordinary");
+        sqlSession.commit();
+        System.out.println(row);
+
     }
 
     /**
@@ -118,11 +116,10 @@ public class TestMybatis {
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
         SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.build(inputStream);
         SqlSession sqlSession = sessionFactory.openSession();
-        UserDao userDao = sqlSession.getMapper(UserDao.class);
-        List<User> list =userDao.getUsers();
-        for(User user: list){
-            System.out.println(user);
-        }
+        UserDao dao = sqlSession.getMapper(UserDao.class);
+        int voyager = dao.editUser(new User("tangfs", "tangfs", 1));
+        System.out.println(voyager);
+        sqlSession.commit();
     }
 
 

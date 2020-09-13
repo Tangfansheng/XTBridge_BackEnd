@@ -1,6 +1,8 @@
 package com.voyager.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.*;
 
 public class QueryAnchor {
@@ -10,7 +12,7 @@ public class QueryAnchor {
     private Float force4;
     private Float force5;
     private Float force6;
-
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private Date datetime;
 
     public QueryAnchor(Float force1, Float force2, Float force3, Float force4, Float force5, Float force6, Date datetime) {
@@ -33,6 +35,23 @@ public class QueryAnchor {
         res.add(force6);
         return res;
     }
+
+    public Map<String, Object> getForcesMap(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("force1", force1);
+        map.put("force2", force2);
+        map.put("force3", force3);
+        map.put("force4", force4);
+        map.put("force5", force5);
+        map.put("force6", force6);
+        map.put("datetime", datetime);
+        return map;
+    }
+
+    public Date getDatetime() {
+        return datetime;
+    }
+
 
     @Override
     public String toString() {

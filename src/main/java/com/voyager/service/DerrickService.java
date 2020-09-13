@@ -16,4 +16,9 @@ public interface DerrickService {
      * @return
      */
     public List<QueryDerrick> findAllData();
+
+    /**
+     * 拿到最近的十条数据
+     */
+    public List<QueryDerrick> findRecent10Data();
 }

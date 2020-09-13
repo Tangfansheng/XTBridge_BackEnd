@@ -1,8 +1,10 @@
 package com.voyager.domain;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+
+import java.util.*;
 
 public class QueryDerrick {
     private Float force1;
@@ -10,6 +12,8 @@ public class QueryDerrick {
     private Float force3;
     private Float force4;
     private Float force5;
+
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private Date datetime;
 
     public QueryDerrick(Float force1, Float force2, Float force3, Float force4, Float force5, Date datetime) {
@@ -21,7 +25,16 @@ public class QueryDerrick {
         this.datetime = datetime;
     }
 
-    public List<Float> getForces(){
+
+    public Date getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(Date datetime) {
+        this.datetime = datetime;
+    }
+
+    public List<Float> getForces() {
         List<Float> res = new ArrayList<>();
         res.add(force1);
         res.add(force2);
@@ -29,6 +42,17 @@ public class QueryDerrick {
         res.add(force4);
         res.add(force5);
         return res;
+    }
+
+    public Map<String, Object> getForcesMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("force1", force1);
+        map.put("force2", force2);
+        map.put("force3", force3);
+        map.put("force4", force4);
+        map.put("force5", force5);
+        map.put("datetime", datetime);
+        return map;
     }
 
     @Override

@@ -4,6 +4,7 @@ package com.voyager.test;
 
 import com.alibaba.fastjson.JSON;
 
+import com.voyager.domain.user.User;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -11,10 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -71,5 +69,12 @@ public class TestJson {
         for (Object obj : map.keySet()){
             System.out.println("key为："+obj+"值为："+map.get(obj));
         }
+    }
+
+    @Test
+    public void run5(){
+        String data = "{\"username\":\"admin\",\"password\":\"XTBridge\",\"permission\":1}";
+        User user = JSON.parseObject(data, User.class);
+        System.out.println(user);
     }
 }

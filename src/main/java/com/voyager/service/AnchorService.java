@@ -22,5 +22,11 @@ public interface AnchorService {
      */
     public void saveOneRecord(QueryAnchor data);
 
+    /**
+     * 最近的10条数据
+     * @return
+     */
+    public List<QueryAnchor> findRecent10Data();
+
 
 }

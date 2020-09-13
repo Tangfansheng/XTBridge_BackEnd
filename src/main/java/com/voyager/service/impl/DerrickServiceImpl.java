@@ -24,4 +24,9 @@ public class DerrickServiceImpl implements DerrickService {
     public List<QueryDerrick> findAllData() {
         return derrickDao.findAllData();
     }
+
+    @Override
+    public List<QueryDerrick> findRecent10Data() {
+        return derrickDao.findRecent10Data();
+    }
 }
