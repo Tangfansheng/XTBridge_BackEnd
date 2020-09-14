@@ -1,14 +1,16 @@
 package com.voyager.domain.sync;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.*;
 
 public class QueryBasket {
     private Float force1;
     private Float force2;
     private Float force3;
     private Float force4;
+
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private Date datetime;
 
     public QueryBasket(Float force1, Float force2, Float force3, Float force4, Date datetime) {
@@ -17,6 +19,36 @@ public class QueryBasket {
         this.force3 = force3;
         this.force4 = force4;
         this.datetime = datetime;
+    }
+
+
+
+    public List<Float> getForces(){
+        List<Float> res = new ArrayList<>();
+        res.add(force1);
+        res.add(force2);
+        res.add(force3);
+        res.add(force4);
+        return res;
+    }
+
+
+    /**
+     * 给Vue填表格用的
+     * @return
+     */
+    public Map<String, Object> getForcesMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("force1", force1);
+        map.put("force2", force2);
+        map.put("force3", force3);
+        map.put("force4", force4);
+        map.put("datetime", datetime);
+        return map;
+    }
+
+    public Date getDatetime() {
+        return datetime;
     }
 
     @Override
@@ -29,14 +61,4 @@ public class QueryBasket {
                 ", datetime=" + datetime +
                 '}';
     }
-
-    public List<Float> getForces(){
-        List<Float> res = new ArrayList<>();
-        res.add(force1);
-        res.add(force2);
-        res.add(force3);
-        res.add(force4);
-        return res;
-    }
-
 }

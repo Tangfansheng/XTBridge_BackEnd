@@ -14,4 +14,7 @@ public interface StressDao {
 
     @Select("select upper,front,mid,rear, bottom, datetime from stress" )
     public List<QueryStress> findAllData();
+
+    @Select("select upper,front,mid,rear, bottom, datetime from stress order by id desc LIMIT 10")
+    public List<QueryStress> findRecent10Data();
 }

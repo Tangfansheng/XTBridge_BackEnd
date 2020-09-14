@@ -22,4 +22,9 @@ public class StressServiceImpl implements StressService {
     public List<QueryStress> findAllData() {
         return stressDao.findAllData();
     }
+
+    @Override
+    public List<QueryStress> findRecent10Data() {
+        return stressDao.findRecent10Data();
+    }
 }

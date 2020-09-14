@@ -22,4 +22,9 @@ public class BasketServiceImpl implements BasketService {
     public List<QueryBasket> findAllData() {
         return basketDao.findAllData();
     }
+
+    @Override
+    public List<QueryBasket> findRecent10Data() {
+        return basketDao.findRecent10Data();
+    }
 }

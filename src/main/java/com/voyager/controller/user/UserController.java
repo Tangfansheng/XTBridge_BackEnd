@@ -25,12 +25,9 @@ public class UserController {
     @ResponseBody
     @CrossOrigin
     @RequestMapping("check")
-    public Object checkLogin(String username) {
+    public Object check(String username) {
         User user = userService.findUser(username);
-        if(user==null){
-            return new WrapperData(null, 300);
-        }
-        return new WrapperData(user, 200);
+        return user;
     }
 
 

@@ -44,6 +44,11 @@ public class QueryDerrick {
         return res;
     }
 
+
+    /**
+     * 给Vue填表格用的
+     * @return
+     */
     public Map<String, Object> getForcesMap() {
         Map<String, Object> map = new HashMap<>();
         map.put("force1", force1);

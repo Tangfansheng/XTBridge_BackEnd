@@ -24,16 +24,22 @@ public class DerrickController {
     @CrossOrigin
     @RequestMapping("recent")
     @ResponseBody
-    public Object getRecentRecord(@RequestParam String dataStructure){
+    public Object getRecentRecord(@RequestParam String vue){
         QueryDerrick recentData = derrickService.findRecentData();
         if(recentData==null){
-            return new WrapperData(null, 300);
-        }
-        if(dataStructure.equals("map")){
-            return new WrapperData(new Object[]{recentData.getForcesMap()}, 200);
+            if(vue.equals("true")){
+                return new WrapperData(null, 300);
+            }else{
+                return null;
+            }
         }else{
-            return new WrapperData(recentData, 200);
+            if(vue.equals("true")){
+                return new WrapperData(new Object[]{recentData.getForcesMap()}, 200);
+            }else{
+                return recentData.getForces();
+            }
         }
+
     }
     @CrossOrigin
     @RequestMapping("xAxis")

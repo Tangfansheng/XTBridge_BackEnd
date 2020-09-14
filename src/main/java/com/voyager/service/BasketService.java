@@ -15,4 +15,8 @@ public interface BasketService {
      * @return
      */
     public List<QueryBasket> findAllData();
+
+
+    public List<QueryBasket> findRecent10Data();
+
 }

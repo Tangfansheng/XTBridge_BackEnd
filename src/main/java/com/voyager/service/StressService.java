@@ -14,4 +14,7 @@ public interface StressService {
      * @return
      */
     public List<QueryStress> findAllData();
+
+
+    public List<QueryStress> findRecent10Data();
 }
