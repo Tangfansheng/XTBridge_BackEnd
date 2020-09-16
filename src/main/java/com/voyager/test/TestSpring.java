@@ -3,6 +3,7 @@ package com.voyager.test;
 
 import com.voyager.domain.QueryAnchor;
 import com.voyager.domain.QueryDerrick;
+import com.voyager.domain.QueryEnv;
 import com.voyager.domain.user.LoginValidation;
 import com.voyager.domain.user.User;
 import com.voyager.service.*;
@@ -82,13 +83,10 @@ public class TestSpring {
     @Test
     public void run5(){
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        DerrickService derrickService = (DerrickService)context.getBean("DerrickServiceImpl");
-        List<QueryDerrick> records = derrickService.findRecent10Data();
+        EnvService service = (EnvService)context.getBean("EnvServiceImpl");
+        QueryEnv env = service.getEnv();
+        System.out.println(env);
 
-        for(int i=0; i<records.size(); i++){
-            //10个历史数据
-            System.out.println(records.get(i).getDatetime());
-        }
 
     }
 }

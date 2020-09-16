@@ -2,10 +2,12 @@ package com.voyager.test;
 
 import com.voyager.dao.AnchorDao;
 import com.voyager.dao.DerrickDao;
+import com.voyager.dao.EnvDao;
 import com.voyager.dao.user.UserDao;
 import com.voyager.dao.sync.BasketDao;
 import com.voyager.domain.QueryAnchor;
 import com.voyager.domain.QueryDerrick;
+import com.voyager.domain.QueryEnv;
 import com.voyager.domain.user.User;
 import com.voyager.domain.sync.QueryBasket;
 import com.voyager.service.DerrickService;
@@ -116,10 +118,9 @@ public class TestMybatis {
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
         SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.build(inputStream);
         SqlSession sqlSession = sessionFactory.openSession();
-        UserDao dao = sqlSession.getMapper(UserDao.class);
-        int voyager = dao.editUser(new User("tangfs", "tangfs", 1));
-        System.out.println(voyager);
-        sqlSession.commit();
+        EnvDao dao = sqlSession.getMapper(EnvDao.class);
+        QueryEnv env = dao.getEnv();
+        System.out.println(env);
     }
 
 

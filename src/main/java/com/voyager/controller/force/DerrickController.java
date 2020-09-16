@@ -77,6 +77,7 @@ public class DerrickController {
             map.put("data", locForces.get(i));
             dataWrapper.add(map);
         }
+        Collections.reverse(dataWrapper);
         return dataWrapper;
     }
 }
