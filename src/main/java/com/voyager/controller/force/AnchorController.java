@@ -80,8 +80,14 @@ public class AnchorController {
             map.put("data", locForces.get(i));
             dataWrapper.add(map);
         }
-        Collections.reverse(dataWrapper);
         return dataWrapper;
+    }
+
+    @ResponseBody
+    @CrossOrigin
+    @RequestMapping("10date")
+    public Object getRecent10date(){
+        return anchorService.getRecent10date();
     }
 
 }

@@ -6,6 +6,7 @@ import com.voyager.dao.EnvDao;
 import com.voyager.dao.user.UserDao;
 import com.voyager.dao.sync.BasketDao;
 import com.voyager.domain.QueryAnchor;
+import com.voyager.domain.QueryDate;
 import com.voyager.domain.QueryDerrick;
 import com.voyager.domain.QueryEnv;
 import com.voyager.domain.user.User;
@@ -118,9 +119,9 @@ public class TestMybatis {
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
         SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.build(inputStream);
         SqlSession sqlSession = sessionFactory.openSession();
-        EnvDao dao = sqlSession.getMapper(EnvDao.class);
-        QueryEnv env = dao.getEnv();
-        System.out.println(env);
+        AnchorDao dao = sqlSession.getMapper(AnchorDao.class);
+        List<QueryDate> date = dao.getRecent10date();
+        System.out.println(date);
     }
 
 

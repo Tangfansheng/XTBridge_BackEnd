@@ -1,10 +1,12 @@
 package com.voyager.dao;
 
 import com.voyager.domain.QueryAnchor;
+import com.voyager.domain.QueryDate;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -23,5 +25,8 @@ public interface AnchorDao {
 
     @Select("select force1,force2,force3,force4,force5,force6, datetime from anchor_force order by id desc LIMIT 10")
     public List<QueryAnchor> findRecent10Data();
+
+    @Select("select datetime from anchor_force order by id desc LIMIT 10")
+    public List<QueryDate> getRecent10date();
 
 }

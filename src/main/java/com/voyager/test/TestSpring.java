@@ -7,6 +7,7 @@ import com.voyager.domain.QueryEnv;
 import com.voyager.domain.user.LoginValidation;
 import com.voyager.domain.user.User;
 import com.voyager.service.*;
+import com.voyager.service.impl.AnchorServiceImpl;
 import com.voyager.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -83,9 +84,8 @@ public class TestSpring {
     @Test
     public void run5(){
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        EnvService service = (EnvService)context.getBean("EnvServiceImpl");
-        QueryEnv env = service.getEnv();
-        System.out.println(env);
+        AnchorService service = (AnchorService)context.getBean("anchorServiceImpl");
+        System.out.println(service.getRecent10date());
 
 
     }

@@ -1,5 +1,6 @@
 package com.voyager.service;
 
+import com.voyager.domain.QueryDate;
 import com.voyager.domain.sync.QueryBasket;
 
 import java.util.List;
@@ -18,5 +19,7 @@ public interface BasketService {
 
 
     public List<QueryBasket> findRecent10Data();
+
+    public List<QueryDate> getRecent10date();
 
 }

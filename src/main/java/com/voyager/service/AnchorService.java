@@ -1,7 +1,9 @@
 package com.voyager.service;
 import com.voyager.domain.QueryAnchor;
+import com.voyager.domain.QueryDate;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 @Service("anchorService")
 public interface AnchorService {
@@ -27,6 +29,12 @@ public interface AnchorService {
      * @return
      */
     public List<QueryAnchor> findRecent10Data();
+
+    /**
+     * 最近的10个时间
+     * @return
+     */
+    public List<QueryDate> getRecent10date();
 
 
 }

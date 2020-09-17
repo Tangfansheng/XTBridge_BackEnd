@@ -1,4 +1,5 @@
 package com.voyager.service;
+import com.voyager.domain.QueryDate;
 import com.voyager.domain.QueryStress;
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface StressService {
 
 
     public List<QueryStress> findRecent10Data();
+
+    public List<QueryDate> getRecent10date();
 }

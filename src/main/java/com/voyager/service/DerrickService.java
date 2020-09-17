@@ -1,5 +1,6 @@
 package com.voyager.service;
 
+import com.voyager.domain.QueryDate;
 import com.voyager.domain.QueryDerrick;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface DerrickService {
      * 拿到最近的十条数据
      */
     public List<QueryDerrick> findRecent10Data();
+
+    public List<QueryDate> getRecent10date();
 }
