@@ -10,13 +10,13 @@ import java.util.List;
 
 @Repository
 public interface DerrickDao {
-    @Select("select force1,force2,force3,force4,force5,datetime from derrick_force order by id desc LIMIT 1")
+    @Select("select force1,force2,force3,force4,force5,force6,datetime from derrick_force order by id desc LIMIT 1")
     public QueryDerrick findRecentData();
 
-    @Select("select force1,force2,force3,force4,force5,datetime from derrick_force")
+    @Select("select force1,force2,force3,force4,force5,force6,datetime from derrick_force")
     public List<QueryDerrick> findAllData();
 
-    @Select("select force1,force2,force3,force4,force5,datetime from derrick_force order by id desc Limit 10")
+    @Select("select force1,force2,force3,force4,force5,force6,datetime from derrick_force order by id desc Limit 10")
     public List<QueryDerrick> findRecent10Data();
 
     @Select("select datetime from derrick_force order by id desc LIMIT 10")

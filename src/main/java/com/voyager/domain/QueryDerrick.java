@@ -12,16 +12,18 @@ public class QueryDerrick {
     private Float force3;
     private Float force4;
     private Float force5;
+    private Float force6;
 
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private Date datetime;
 
-    public QueryDerrick(Float force1, Float force2, Float force3, Float force4, Float force5, Date datetime) {
+    public QueryDerrick(Float force1, Float force2, Float force3, Float force4, Float force5, Float force6, Date datetime) {
         this.force1 = force1;
         this.force2 = force2;
         this.force3 = force3;
         this.force4 = force4;
         this.force5 = force5;
+        this.force6 = force6;
         this.datetime = datetime;
     }
 
@@ -41,6 +43,7 @@ public class QueryDerrick {
         res.add(force3);
         res.add(force4);
         res.add(force5);
+        res.add(force6);
         return res;
     }
 
@@ -56,6 +59,7 @@ public class QueryDerrick {
         map.put("force3", force3);
         map.put("force4", force4);
         map.put("force5", force5);
+        map.put("force6", force6);
         map.put("datetime", datetime);
         return map;
     }
@@ -68,6 +72,7 @@ public class QueryDerrick {
                 ", force3=" + force3 +
                 ", force4=" + force4 +
                 ", force5=" + force5 +
+                ", force6=" + force6 +
                 ", datetime=" + datetime +
                 '}';
     }
